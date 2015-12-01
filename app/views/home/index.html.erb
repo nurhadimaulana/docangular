@@ -1,0 +1,42 @@
+<p>Hello, {{application_owner}}!</p>
+<p>Total number of phones: {{phones.length}}</p>
+<hr>
+Search : <input type="text" ng-model="query">
+<br><br>
+Sort by :
+<select ng-model="orderProp">
+  <option value="name">Alphabetical</option>
+  <option value="age">Newest</option>
+  <option value="-age">Oldest</option> <!-- reverse -->
+</select>
+<hr>
+
+<!--  -->
+<!-- example of phone data taken from static json -->
+<!--  -->
+<!--
+<ul>
+  <li ng-repeat="phone in phones | filter:query | orderBy:orderProp">
+    <span>{{phone.name}}</span>
+    <p>{{phone.snippet}}</p>
+  </li>
+</ul>
+-->
+
+<!--  -->
+<!-- example of phone data taken from application database -->
+<!--  -->
+<ul>
+  <li ng-repeat="phone in phones | filter:query | orderBy:orderProp" class="thumbnail">
+    <a href="#" class="thumb"><img src="{{phone.image_url}}" width="100"/></a>
+    <a href="#" class="thumb">{{phone.name}}</a>
+    <p>{{phone.snippet}}</p>
+  </li>
+</ul>
+<hr>
+
+<!-- -->
+<!-- displaying json of data retrieved by the application -->
+<!-- -->
+<h4>Data Retrieved from API</h4>
+<pre>{{phones | filter:query | orderBy:orderProp | json}}</pre>
